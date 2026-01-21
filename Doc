@@ -1,0 +1,63 @@
+
+CW-WPA: Clutch-Weighted Win Probability Added (NFL, Java)
+What this project does
+
+This project creates a custom football impact metric, CW-WPA, by computing each play’s Win Probability Added (WPA) and weighting it more heavily in high-pressure situations (late + close games).
+
+Data
+
+NFL play-by-play (2015) CSV
+
+Source: Kaggle (linked)
+
+Dataset is not included in repo (see Setup)
+
+Methods
+
+Bin-based Win Probability model using historical outcomes:
+
+bins by score differential and time remaining
+
+Compute WPA per play: WPA = WP_now - WP_prev
+
+Define clutch pressure weight:
+
+increases when game is late and close
+
+Custom metric:
+
+CW-WPA = Σ WPA * (1 + λ * clutchWeight)
+
+Results
+
+outputs/leaderboard_wpa.csv
+
+outputs/leaderboard_cwwpa.csv
+
+outputs/report.txt (case studies + correlation + overlap)
+
+How to run
+
+Download dataset and place as data/pbp.csv
+
+Compile and run:
+
+javac src/*.java
+
+java -cp src Main
+
+Validation
+
+Correlation between WPA and CW-WPA
+
+Top-10 overlap comparison
+
+2 case studies showing why rankings change
+
+Limitations / Next steps
+
+Player credit assignment can be improved
+
+Possession inference could be refined
+
+Extend to multiple seasons
